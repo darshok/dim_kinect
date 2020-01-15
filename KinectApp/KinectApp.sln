@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinectAppEjercicio1", "KinectApp\KinectAppEjercicio1.csproj", "{71D88DB9-4D81-4E3A-86D7-4856E5466C94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinectAppEjercicio2", "KinectAppEjercicio2\KinectAppEjercicio2.csproj", "{1AC49F81-BBBC-491B-A8F3-9C8061C2668C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{71D88DB9-4D81-4E3A-86D7-4856E5466C94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71D88DB9-4D81-4E3A-86D7-4856E5466C94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71D88DB9-4D81-4E3A-86D7-4856E5466C94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71D88DB9-4D81-4E3A-86D7-4856E5466C94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AC49F81-BBBC-491B-A8F3-9C8061C2668C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AC49F81-BBBC-491B-A8F3-9C8061C2668C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AC49F81-BBBC-491B-A8F3-9C8061C2668C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AC49F81-BBBC-491B-A8F3-9C8061C2668C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2119BE71-E87C-4BA9-B278-75E2D2A7EAB0}
+	EndGlobalSection
+EndGlobal
