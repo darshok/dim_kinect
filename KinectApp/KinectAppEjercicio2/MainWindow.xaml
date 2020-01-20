@@ -9,7 +9,7 @@
     <Grid>
         <Image x:Name="image" Width="640" Height="480" Margin="10,10,143.6,80.4"/>
         <TextBlock x:Name="text" Margin="10,495,9.6,10.4" />
-        <RadioButton x:Name="radioButtonColor" Margin="655,10,9.6,501.4" Content="Color"/>
-        <RadioButton x:Name="radioButtonDepth" Margin="655,74,9.6,405.4" Content="Depth"/>
+        <RadioButton x:Name="radioButtonColor" Margin="655,10,9.6,501.4" Content="Color" Checked="radioButtonColor_Checked"/>
+        <RadioButton x:Name="radioButtonDepth" Margin="655,74,9.6,405.4" Content="Depth" Checked="radioButtonDepth_Checked"/>
     </Grid>
 </Window>

@@ -29,6 +29,8 @@ namespace KinectAppEjercicio2
         public MainWindow()
         {
             InitializeComponent();
+            radioButtonColor.IsChecked = true;
+            radioButtonDepth.IsChecked = false;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -38,26 +40,22 @@ namespace KinectAppEjercicio2
                 if (potentialSensor.Status == KinectStatus.Connected)
                 {
                     sensor = potentialSensor;
-                    //colorPixels = new byte[sensor.ColorStream.FramePixelDataLength];
-                    //colorBitmap = new WriteableBitmap(sensor.ColorStream.FrameWidth,
-                    //    sensor.ColorStream.FrameHeight, 96.0, 96.0, PixelFormats.Bgr32, null);
-
-                    colorPixels = new byte[sensor.DepthStream.FramePixelDataLength * sizeof(int)];
-                    depthPixels = new DepthImagePixel[sensor.DepthStream.FramePixelDataLength];
-                    colorBitmap = new WriteableBitmap(sensor.DepthStream.FrameWidth,
-                        sensor.DepthStream.FrameHeight, 96.0, 96.0, PixelFormats.Bgr32, null);
+                    if(sensor != null)
+                    {
+                        colorPixels = new byte[sensor.ColorStream.FramePixelDataLength];
+                        colorBitmap = new WriteableBitmap(sensor.ColorStream.FrameWidth,
+                            sensor.ColorStream.FrameHeight, 96.0, 96.0, PixelFormats.Bgr32, null);
+                        sensor.ColorStream.Enable(ColorImageFormat.RgbResolution640x480Fps30);
+                        sensor.ColorFrameReady += SensorColorFrameReady;
+                    }
                     break;
                 }
             }
-
-            if (sensor != null)
-            {
-                //sensor.ColorStream.Enable(ColorImageFormat.RgbResolution640x480Fps30);
-                //sensor.ColorFrameReady += SensorColorFrameReady;
-                sensor.DepthStream.Enable(DepthImageFormat.Resolution640x480Fps30);
-                sensor.DepthFrameReady += SensorDepthFrameReady;
-            }
-
+            startSensor();            
+        }
+        
+        private void startSensor()
+        {
             try
             {
                 sensor.Start();
@@ -67,6 +65,53 @@ namespace KinectAppEjercicio2
                 sensor = null;
                 this.text.Text = "Kinect no preparada";
             }
+        }
+
+
+        private void radioButtonColor_Checked(object sender, RoutedEventArgs e)
+        {
+            foreach (var potentialSensor in KinectSensor.KinectSensors)
+            {
+                if (potentialSensor.Status == KinectStatus.Connected)
+                {
+                    sensor = potentialSensor;
+                    if (sensor != null)
+                    {
+                        sensor.DepthStream.Disable();
+                        colorPixels = new byte[sensor.ColorStream.FramePixelDataLength];
+                        colorBitmap = new WriteableBitmap(sensor.ColorStream.FrameWidth,
+                            sensor.ColorStream.FrameHeight, 96.0, 96.0, PixelFormats.Bgr32, null);
+                        sensor.ColorStream.Enable(ColorImageFormat.RgbResolution640x480Fps30);
+                        sensor.ColorFrameReady += SensorColorFrameReady;
+                    }
+                    break;
+                }
+            }
+            startSensor();
+        }
+
+        private void radioButtonDepth_Checked(object sender, RoutedEventArgs e)
+        {
+            
+            foreach (var potentialSensor in KinectSensor.KinectSensors)
+            {
+                if (potentialSensor.Status == KinectStatus.Connected)
+                {
+                    sensor = potentialSensor;
+                    if (sensor != null)
+                    {
+                        sensor.ColorStream.Disable();
+                        colorPixels = new byte[sensor.DepthStream.FramePixelDataLength * sizeof(int)];
+                        depthPixels = new DepthImagePixel[sensor.DepthStream.FramePixelDataLength];
+                        colorBitmap = new WriteableBitmap(sensor.DepthStream.FrameWidth,
+                            sensor.DepthStream.FrameHeight, 96.0, 96.0, PixelFormats.Bgr32, null);
+                        sensor.DepthStream.Enable(DepthImageFormat.Resolution640x480Fps30);
+                        sensor.DepthFrameReady += SensorDepthFrameReady;
+                    }
+                    break;
+                }
+            }
+            startSensor();
         }
         private void SensorColorFrameReady(object sender, ColorImageFrameReadyEventArgs e)
         {
@@ -89,7 +134,7 @@ namespace KinectAppEjercicio2
         {
             using (DepthImageFrame depthFrame = e.OpenDepthImageFrame())
             {
-                if(depthFrame != null)
+                if (depthFrame != null)
                 {
                     depthFrame.CopyDepthImagePixelDataTo(depthPixels);
 
@@ -97,7 +142,7 @@ namespace KinectAppEjercicio2
                     int maxDepth = depthFrame.MaxDepth;
 
                     int colorPixelIndex = 0;
-                    for(int i = 0; i < depthPixels.Length; i++)
+                    for (int i = 0; i < depthPixels.Length; i++)
                     {
                         short depth = depthPixels[i].Depth;
                         byte intensity = (byte)(depth >= minDepth && depth <= maxDepth ? depth : 0);
