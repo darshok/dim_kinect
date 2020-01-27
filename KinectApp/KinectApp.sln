@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinectAppEjercicio2", "Kine
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsqueletoPlantillaEj3", "EsqueletoPlantilla\EsqueletoPlantillaEj3.csproj", "{8121846D-923E-4BB0-8647-30DA753D156E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsqueletoGestosEj4", "EsqueletoGestosPlantilla\EsqueletoGestosEj4.csproj", "{9DBE4C08-D596-45B5-9120-81F3A10ED5DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{8121846D-923E-4BB0-8647-30DA753D156E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8121846D-923E-4BB0-8647-30DA753D156E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8121846D-923E-4BB0-8647-30DA753D156E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DBE4C08-D596-45B5-9120-81F3A10ED5DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DBE4C08-D596-45B5-9120-81F3A10ED5DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DBE4C08-D596-45B5-9120-81F3A10ED5DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DBE4C08-D596-45B5-9120-81F3A10ED5DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
